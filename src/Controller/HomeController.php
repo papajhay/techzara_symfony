@@ -53,7 +53,7 @@ class HomeController extends AbstractController
     */
     public function returnArrayFlatten() {
         return $this->render("identite/index.html.twig",[
-            'nombre'=>(ProfileConstant::NUMBER_TO_FLAT)
+            'nombre'=> $this->array_flatten(ProfileConstant::NUMBER_TO_FLAT)
         ]);
     }
 
