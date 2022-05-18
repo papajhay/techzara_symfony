@@ -1,0 +1,49 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Le profil d'un étudiant{% endblock %}
+
+
+{% block body %}
+    <h1 class="text-center mt-3">Identité d'un élève</h1>
+    <div class="container">
+        {% if profile is defined  %}
+            <h2 class="h3">  Nom :{{ profile.name }}</h2>
+            <h2 class="h3">Prenom : {{ profile.prenom }}</h2>
+            <h2 class="h3">   
+                Date de naissance : {{ profile.dateDeNaissance }}
+            </h2>
+            <h2 class="h3">Age : {{ profile.age }} ans</h2> 
+            <h2 class="h3">Parents :</h2>
+                <h4> 
+                    {% for parent in profile.parents %}
+                            Nom : {{ parent.nom }} </br>
+                            Prenom : {{ parent.prenom }}</br>
+                            Nom complet : {{ parent.nomComplet }} </br>
+                    {% endfor %}
+                </h4>
+            <h2 class="h3">Etudes :</h2> 
+                <h4>
+                    {% for etude in profile.etudes %}
+                            Etablissement : {{ etude.etablissement}} </br>
+                            Diplôme : {{ etude.diplome }}</br>
+                    {% endfor %}
+                </h4>  
+
+                <a href="{{ path("home_page") }}">Lien vers la page d'accueil </a>
+                
+        {% endif  %} 
+   </div>
+
+   {% block nombreAplatit %}
+       {% if nombre is defined  %}
+            <p>NUMBER_TO_FLAT = [
+                {% for nb in nombre %}
+                    {{ nb }}-
+                {% endfor %}
+                ]
+            </p>
+        {% endif  %}
+   {% endblock %}
+    
+{% endblock %}
+

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Car index{% endblock %}
+
+{% block body %}
+   <table>
+      <tr>
+          <th>Noms</th>
+          <th>Age</th>
+      </tr>   
+   
+
+    {% for person in persons %}
+       {% set a= person.age %}
+       {% if a > 18 and a < 40 %}
+          <tr style="color : orange; text-transform: uppercase ">
+            <td>{{ person.name }}</td>
+            <td>{{ person.age }}</td>
+          </tr>
+          {% elseif a <= 15 %} 
+          <tr style="color : blue; text-transform: capitalize ">
+            <td>{{ person.name }}</td>
+            <td>{{ person.age }}</td>
+          </tr>
+          {% else %} 
+          <tr style="color : pink; text-transform: snake-case ">
+            <td>{{ person.name }}</td>
+            <td>{{ person.age }}</td>
+          </tr>
+       {% endif %}
+    
+        
+    {% endfor %}
+    </table>
+{% endblock %}
